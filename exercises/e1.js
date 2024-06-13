@@ -5,12 +5,12 @@ import { data } from "../data/data";
 // Return example: ['name1', 'name2', ... , 'nameN']
 
 export function getPlanetNames(data) {
-  // Your code goes here...
+  
   let planetNames = [];
 
-  // Loop through the planets array
+  
   for (let i = 0; i < data.planets.length; i++) {
-      // Push each planet's name to the planetNames array
+      
       planetNames.push(data.planets[i].name);
   }
 

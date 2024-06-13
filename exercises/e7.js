@@ -6,6 +6,18 @@ import { data } from "../data/data";
 
 export function getPlanetsNamesWithMoons(data) {
   // Your code goes here...
+  let planetsWithMoons = [];
+
+  
+  data.planets.forEach(planet => {
+    
+    if (planet.moons && planet.moons.length > 0) {
+      
+      planetsWithMoons.push(planet.name);
+    }
+  });
+
+  return planetsWithMoons;
 }
 
 

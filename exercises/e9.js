@@ -6,16 +6,8 @@ import { data } from "../data/data";
 
 export function getEarthData(data) {
   // Your code goes here...
-  let earthData = {};
-
-  
-  data.planets.forEach(planet => {
-    if (planet.name === 'Earth') {
-      earthData = planet;
-    }
-  });
-
-  return earthData;
+  const earthData = data.planets.find(planet => planet.name === 'Earth');
+  return earthData || {};
 }
 
 

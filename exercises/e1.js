@@ -4,20 +4,11 @@ import { data } from "../data/data";
 // Return an array of all Planets' names
 // Return example: ['name1', 'name2', ... , 'nameN']
 
-export function getPlanetNames(data) {
-  
-  let planetNames = [];
+ export function getPlanetNames(data) {
 
-  
-  for (let i = 0; i < data.planets.length; i++) {
-      
-      planetNames.push(data.planets[i].name);
-  }
-
+  const planetNames = data.planets.map(planet => planet.name);
   return planetNames;
-  
 }
-
 
 
 // === TEST YOURSELF ===

@@ -6,17 +6,8 @@ import { data } from "../data/data";
 
 export function findPlanetNameByMoon(data, moonName) {
   // Your code goes here...
-  let planetName = '';
-
-  
-  data.planets.forEach(planet => {
-    
-    if (planet.moons && planet.moons.includes(moonName)) {
-      planetName = planet.name;
-    }
-  });
-
-  return planetName;
+  const planet = data.planets.find(planet => planet.moons && planet.moons.includes(moonName));
+    return planet ? planet.name : ''; 
 }
 
 

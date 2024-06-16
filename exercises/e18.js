@@ -9,19 +9,15 @@ export function getGreatestDiscoveryYear(data) {
   // feel free to import your `maxBy` or `minBy` methods from previous lessons
   const asteroidCountsByYear = data.asteroids.reduce((acc, asteroid) => {
     const year = asteroid.discoveryYear;
-    if (!acc[year]) {
-      acc[year] = 0;
-    }
-    acc[year]++;
+    acc.set(year, (acc.get(year) || 0) + 1);
     return acc;
-  }, {});
+}, new Map());
 
-  
-  const maxYear = Object.keys(asteroidCountsByYear).reduce((maxYear, year) => {
-    return asteroidCountsByYear[year] > asteroidCountsByYear[maxYear] ? year : maxYear;
-  });
+const maxYear = [...asteroidCountsByYear.keys()].reduce((maxYear, year) => {
+    return asteroidCountsByYear.get(year) > asteroidCountsByYear.get(maxYear) ? year : maxYear;
+});
 
-  return Number(maxYear);
+return Number(maxYear);
   
   }
 

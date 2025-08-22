@@ -4,15 +4,15 @@ import { data } from "../data/data";
 // Return an array with all Planets' names with a massValue greater or equal to a given number (1-7)
 // Return example: ['name1', 'name2', ... , 'nameN']
 
-export function getPlanetsWithMassValue(data, number) {
-  // Your code goes here...
-  return data.planets
-        .filter(planet => planet.mass.massValue >= number)
-        .map(planet => planet.name);
-
-   
+export const getPlanetsWithMassValue = (data, number) => {
+  let result = []
+  for (let i = 0; i < data.planets.length; i++) {
+    if (data.planets[i].mass.massValue >= number) {
+      result.push(data.planets[i].name)
+    }
+  }
+  return result
 }
-
 
 
 // === TEST YOURSELF ===

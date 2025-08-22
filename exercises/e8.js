@@ -4,13 +4,16 @@ import { data } from "../data/data";
 // Return a Planet name by a given moon name
 // Return example: 'Planet Name'
 
+// export function findPlanetNameByMoon(data, moonName) {
+//   const planet = data.planets.find(planet => planet.moons && planet.moons.includes(moonName));
+//   return planet ? planet.name : '';  
+// }
+
 export function findPlanetNameByMoon(data, moonName) {
-  // Your code goes here...
-  const planet = data.planets.find(planet => planet.moons && planet.moons.includes(moonName));
-  return planet ? planet.name : '';      
+return data.planets.filter(a => a.moons && a.moons.includes(moonName))
+        .map(a => a.name)
+        .toString()
 }
-
-
 
 // === TEST YOURSELF ===
 // Once you're finished run the test with "npm run test-8"

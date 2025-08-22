@@ -3,24 +3,24 @@
  * Return the year with the greatest number of Asteroids discoveries
  * Return example: 1902
  */
-
+import { maxBy, minBy } from './e17.js'
 export function getGreatestDiscoveryYear(data) {
   // Your code goes here...
   // feel free to import your `maxBy` or `minBy` methods from previous lessons
-  const asteroidCountsByYear = data.asteroids.reduce((acc, asteroid) => {
-    const year = asteroid.discoveryYear;
-    acc.set(year, (acc.get(year) || 0) + 1);
-    return acc;
-}, new Map());
-
-const maxYear = [...asteroidCountsByYear.keys()].reduce((maxYear, year) => {
-    return asteroidCountsByYear.get(year) > asteroidCountsByYear.get(maxYear) ? year : maxYear;
-});
-
-return Number(maxYear);
-  
+  let asteroidYearMap = {}
+  let yearWithMostAsteroidDiscoverys = null
+  let maxCount = -Infinity
+  for  (let asteroid of data.asteroids) {
+   asteroidYearMap[asteroid.discoveryYear] = (asteroidYearMap[asteroid.discoveryYear] + 1) || 0
   }
-
+  for (let key in asteroidYearMap) {
+    if (asteroidYearMap[key] > maxCount) {
+      maxCount = asteroidYearMap[key]
+      yearWithMostAsteroidDiscoverys = key
+    } 
+  }
+  return Number(yearWithMostAsteroidDiscoverys)
+}
 
 
 

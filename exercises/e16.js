@@ -11,12 +11,25 @@
 
 export function find(array, callback) {
   // Your code goes here...
-  for (let i = 0; i < array.length; i++) {
-    if (callback(array[i], i, array)) {
-      return array[i];
-    }
+  for (let element of array) {
+    if (callback(element)) {
+    return element
   }
+ }
+   return undefined
 }
+
+
+// export function find(array, callback) {
+//   // Your code goes here...
+//   const result = []
+//   for (let char of array) {
+//     if (char === callback) {
+//       return char
+//     }
+    
+//   } return undefined
+// }
 
 
 // === TEST YOURSELF ===

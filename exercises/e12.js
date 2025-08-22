@@ -6,10 +6,9 @@ import { data } from "../data/data";
 
 export function allPlanetsMoonsCount(data) {
   // Your code goes here...
-  return data.planets.reduce((sum, planet) => sum + (planet.moonsCount || 0), 0);
-
+return data.planets.map(a => a.moons ? a.moons.length : 0)
+           .reduce((a, b) => a + b, 0)
 }
-
 
 
 // === TEST YOURSELF ===

@@ -10,11 +10,15 @@
 
 export function minBy(array, cb) {
   // Your code goes here...
-  if (array.length === 0) return undefined;
-  
-  return array.reduce((minElement, currentElement) => {
-    return cb(currentElement) < cb(minElement) ? currentElement : minElement;
-  });
+  if (array.length === 0) return undefined; 
+  let youngestPerson = array[0]
+  for (let i = 1; i < array.length; i++) {
+    let currentElement = array[i]
+     if (cb(currentElement) < cb(youngestPerson)) {
+      youngestPerson = currentElement
+     }
+  }
+  return youngestPerson
 }
 
 
@@ -22,10 +26,14 @@ export function minBy(array, cb) {
 export function maxBy(array, cb) {
   // Your code goes here...
   if (array.length === 0) return undefined;
-  
-  return array.reduce((maxElement, currentElement) => {
-    return cb(currentElement) > cb(maxElement) ? currentElement : maxElement;
-  });
+ let maxAgePerson = array[0]
+ for (let i = 1; i < array.length; i++) {
+  let currentPerson = array[i]
+  if (cb(currentPerson) > cb(maxAgePerson)) {
+    maxAgePerson = currentPerson
+  }
+ }
+     return maxAgePerson
 }
 
 

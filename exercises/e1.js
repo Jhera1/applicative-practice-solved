@@ -7,8 +7,8 @@ import { data } from "../data/data";
  export function getPlanetNames(data) {
 
   return data.planets.map(planet => planet.name);
-  
-}
+
+  }
 
 
 // === TEST YOURSELF ===

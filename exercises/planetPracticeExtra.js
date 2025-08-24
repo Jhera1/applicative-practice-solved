@@ -1,5 +1,3 @@
-import { maxBy } from "./e17";
-
 const data = {
   planets: [
     {
@@ -290,10 +288,84 @@ function findPlanetNameByMoon(data, moonName) {
 function getGreatestDiscoveryYear(data) {
   // Your code goes here...
   // feel free to import your `maxBy` or `minBy` methods from previous lessons
-  let asteroidYearMap = {}
-  for  (let asteroid of data.asteroids) {
-   asteroidYearMap[asteroid.discoveryYear] = (asteroidYearMap[asteroid.discoveryYear] || 0) + 1
-  }
-  return maxBy(asteroidYearMap)
+  
 }
-console.log(getGreatestDiscoveryYear(data))
+// console.log(getGreatestDiscoveryYear(data))
+
+// LeetCode 2. Add Two Numbers
+// const JoinArrToNum = arrOfNums => Number(arrOfNums.join('')) 
+// const addTwoNumbers = (arr1, arr2) => (JoinArrToNum(arr1) + JoinArrToNum(arr2)).toString().split('').reverse().join('')
+// console.log(addTwoNumbers([2,4,3], [5,6,4]))
+
+const slidingWindows = (length, offset, list) => {
+ if (length === 0) return [[]]
+ if (list.length === 0) return []
+ let result = []
+ for (let i = 0; i + length <= list.length; i += offset) {
+    result.push(list.slice(i, i + length))
+ }
+  return result
+};
+// console.log(slidingWindows(2, 1, [0,1,2,3,4]))
+
+// const squeekyWindows = (nums, k) => {
+//    let result = []
+//    for (let i = 0; i + k <= nums.length; i++) {
+//     let slicedArr = nums.slice(i, i + k)
+//     result.push(Math.max(...slicedArr))
+//    }
+//    return result
+// }
+// console.log([1,3,-1,-3,5,3,6,7], 3)
+// squeekyWindows([1,3,-1,-3,5,3,6,7], 3)
+
+
+const squeekyWindows = (nums, k) => {
+  let result = []
+  for (let i = 0; i + k <= nums.length; i++) {
+  let slicedArr = nums.slice(i, i + k)
+   for (let num of slicedArr) {
+  let largestNumInSlicedArr = -Infinity 
+    if (num > largestNumInSlicedArr) {
+      largestNumInSlicedArr = num
+    }
+      result.push(largestNumInSlicedArr)
+   }
+  }
+  return result
+}
+// console.log([1,3,-1,-3,5,3,6,7], 3)
+
+function gimme (triplet) {
+  let result = null
+  let sortedArr = triplet.sort()
+  result = tripletindexOf(sortedArr[1])
+  return result
+}
+// console.log(gimme([5, 10, 14]))
+
+addTwoNumbers = function(l1, l2) {
+  const JoinArrToNum = arr => Number(arr.join('')) 
+  let total = JoinArrToNum(l1) + JoinArrToNum(l2)
+  return [...total.toString()].reverse().map(a => Number(a))
+};
+console.log(addTwoNumbers([2,4,3], [5,6,4]))
+// addTwoNumbers([2,4,3], [5,6,4])
+
+
+
+
+// asteroids with the longest orbitalPeriod
+
+const longestOrbitalPeriod = data => {
+  let result = ''
+  let longestOrbit = -Infinity
+  for (let asteroid of data.asteroids) {
+    if (asteroid.orbitalPeriod > longestOrbit) {
+      longestOrbit = asteroid.orbitalPeriod
+      result = asteroid.name
+    }
+  }
+  return `The asteriod with the longest orbit is "${result}" with an orbital period of ${longestOrbit} years`
+}
+// console.log(longestOrbitalPeriod(data))
